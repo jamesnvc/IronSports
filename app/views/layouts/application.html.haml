@@ -1,0 +1,19 @@
+!!! html
+%html
+  %head
+    %title UofTIronSports
+    = stylesheet_link_tag "application"
+    = stylesheet_link_tag params[:controller]
+    = javascript_include_tag "application"
+    = javascript_include_tag params[:controller]
+    = csrf_meta_tags
+  %body
+    %hgroup
+      = image_tag 'logo.jpg'
+    %section.notify
+      - if notice
+        %span.notice= notice
+      - if alert
+        %span.alert= alert
+    %section#main
+      = yield

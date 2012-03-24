@@ -11,6 +11,10 @@ end
 
 module UofTIronSports
   class Application < Rails::Application
+
+    # Don't access DB or load models when precompliing (for Heroku)
+    config.assets.initialize_on_precompile = false
+
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
@@ -44,5 +48,6 @@ module UofTIronSports
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+    config.generators.stylesheet_engine = :sass
   end
 end
