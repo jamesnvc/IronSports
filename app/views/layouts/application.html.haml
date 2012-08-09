@@ -8,7 +8,8 @@
   %body
     %section.header
       %hgroup.logo
-        = image_tag 'logo.jpg'
+        %a(href="/")
+          = image_tag 'logo.jpg'
       %nav.topnav
         %ul
           %li= link_to 'Facebook', root_url
@@ -20,7 +21,7 @@
           - if not user_signed_in?
             %li.big= link_to 'Member Login', new_user_session_path
           - else
-            %li= link_to 'Manage User', edit_user_registration_path
+            %li= link_to 'Manage Acconut', edit_user_registration_path
             %li= link_to 'Sign Out', destroy_user_session_path, method: :delete
       %nav.bottomnav
         %ul
@@ -28,7 +29,7 @@
           %li= link_to 'About', root_url
           %li= link_to 'Media', root_url
           %li= link_to 'Calendar', root_url
-          %li= link_to 'Leaderboard', root_url
+          %li= link_to 'Leaderboard', leaderboard_path
           %li= link_to 'Contact', root_url
     %section.notify
       - if notice
