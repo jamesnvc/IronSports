@@ -7,6 +7,13 @@
 
 @import "fonts"
 
+.clear
+  :clear both
+.left
+  :float left
+.right
+  :float right
+
 body
   :text-align center
   :background-color black
@@ -15,3 +22,51 @@ body
 h1, h2, h3, h4
   :font-family 'HeadlineOneHPLHS', sans-serif
   :font-weight normal
+
+section.header
+  :min-height 10em
+  :margin-left 3em
+  hgroup.logo
+    :float left
+    img
+      :height 5em
+nav
+  :font-family 'HeadlineOneHPLHS', sans-serif
+  :float left
+  :margin-left 0
+  ul
+    :list-style-type none
+    li.big
+      :font-size 1.5em
+    li
+      :display inline-block
+      :margin-left 0.2em
+      :padding-left 0.5em
+      a
+        :font-family sans-serif
+.bottomnav
+  :font-size 1.5em
+  ul
+    :background-color white
+    :margin-top 0
+    li
+      :height 100%
+      :padding 0
+      :padding-left 0.5em
+      a
+        :color black
+        &:visited
+          :color black
+        &:hover
+          :background-color black
+          :color white
+
+
+
+section#main
+  :clear both
+
+.twocol
+  :clear both
+  :width 40%
+  :margin 0 auto
