@@ -8,4 +8,14 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me,
     :first_name, :last_name, :birthdate, :studying, :graduating, :bodyweight,
     :gender, :weight_class
+
+  validates_format_of :gender, with: /\A(M|F)\z/, message: "M or F for gender"
+
+  def name
+    if not first_name and not last_name
+      return email
+    else
+      [ first_name || '', last_name || ''].join(' ').strip
+    end
+  end
 end
