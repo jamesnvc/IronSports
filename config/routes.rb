@@ -1,5 +1,7 @@
 UofTIronSports::Application.routes.draw do
 
+  devise_for :users
+
   root to: 'pages#show', name: 'main'
 
   # The priority is based upon order of creation:

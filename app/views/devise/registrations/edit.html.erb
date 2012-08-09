@@ -1,0 +1,58 @@
+<h2>Edit <%= resource_name.to_s.humanize %></h2>
+
+<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
+  <%= devise_error_messages! %>
+
+  <div><%= f.label :first_name %><br />
+  <%= f.text_field :first_name %></div>
+
+  <div><%= f.label :last_name %><br />
+  <%= f.text_field :last_name %></div>
+
+  <div><%= f.label :birthdate %><br />
+  <% current_year = Time.now.year %>
+  <%= f.date_select :birthdate, start_year: current_year - 50, end_year: current_year - 14 %></div>
+
+  <div><%= f.label :studying %><br />
+  <%= f.text_field :studying %></div>
+
+  <div><%= f.label :graduating %><br />
+  <%= f.text_field :graduating %></div>
+
+  <div><%= f.label :bodyweight %><br />
+  <%= f.number_field :bodyweight %></div>
+
+  <div><%= f.label :gender %><br />
+  <%= f.select :gender, ['M', 'F'] %></div>
+
+  <div><%= f.label :weight_class %><br />
+  <% if resource.gender.match /\Am/i %>
+    <% mens_weight_classes = ['53 kg', '59 kg', '66 kg', '74 kg', '83 kg',
+        '93 kg', '105 kg', '120 kg', '120+ kg' ] %>
+    <%= f.select :weight_class, mens_weight_classes %></div>
+  <% else %>
+    <% womens_weight_classes = ['43 kg', '47 kg', '52 kg', '57 kg', '63 kg',
+      '72 kg', '84 kg', '84+ kg'] %>
+    <%= f.select :weight_class, womens_weight_classes %></div>
+  <% end %>
+
+  <div><%= f.label :email %><br />
+  <%= f.email_field :email %></div>
+
+  <div><%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
+  <%= f.password_field :password, :autocomplete => "off" %></div>
+
+  <div><%= f.label :password_confirmation %><br />
+  <%= f.password_field :password_confirmation %></div>
+
+  <div><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+  <%= f.password_field :current_password %></div>
+
+  <div><%= f.submit "Update" %></div>
+<% end %>
+
+<h3>Cancel my account</h3>
+
+<p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), :confirm => "Are you sure?", :method => :delete %>.</p>
+
+<%= link_to "Back", :back %>
