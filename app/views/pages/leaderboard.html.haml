@@ -1,0 +1,6 @@
+%h1 Leaderboard
+%dl
+  - User.all.each do |user|
+    %dt= user.name
+    %dd= user.bodyweight
+

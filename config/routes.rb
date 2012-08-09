@@ -4,6 +4,8 @@ UofTIronSports::Application.routes.draw do
 
   root to: 'pages#show', name: 'main'
 
+  match 'leaderboard' => 'pages#show', name: 'leaderboard', as: 'leaderboard'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
