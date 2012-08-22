@@ -1,5 +1,5 @@
 %h1 Leaderboard
-%table
+%table.stats
   %thead
     %tr
       %th Name
@@ -12,10 +12,11 @@
       %th Wilks Total
   %tbody
     - User.all.each do |user|
+      - next if user.admin? or user.info_missing?
       %tr
         %td= user.name
         %td= user.bodyweight
-        %td= "%0.3f" % user.wilks
+        %td= "%0.3f" %  user.wilks
         %td= user.squat_max
         %td= user.bench_max
         %td= user.deadlift_max

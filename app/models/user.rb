@@ -17,7 +17,12 @@ class User < ActiveRecord::Base
     return self.is_admin
   end
 
+  def info_missing?
+    [bodyweight, squat_max, bench_max, deadlift_max].any? &:nil?
+  end
+
   def wilks
+    return 0 if not self.bodyweight
     coeffs = {
         'M' => {
           a: -216.0475144,
