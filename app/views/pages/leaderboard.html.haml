@@ -1,6 +1,23 @@
 %h1 Leaderboard
-%dl
-  - User.all.each do |user|
-    %dt= user.name
-    %dd= user.bodyweight
-
+%table
+  %thead
+    %tr
+      %th Name
+      %th Bodyweight
+      %th Wilks Coefficient
+      %th Squat
+      %th Bench
+      %th Deadlift
+      %th Total
+      %th Wilks Total
+  %tbody
+    - User.all.each do |user|
+      %tr
+        %td= user.name
+        %td= user.bodyweight
+        %td= "%0.3f" % user.wilks
+        %td= user.squat_max
+        %td= user.bench_max
+        %td= user.deadlift_max
+        %td= user.total
+        %td= "%0.3f" % user.wilks_total
