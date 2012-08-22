@@ -1,24 +1,18 @@
-%h1 Listing posts
+%h1 News
 
-%table
-  %tr
-    %th Title
-    %th Content
-    %th Published
-    %th
-    %th
-    %th
-
-  - @posts.each do |post|
-    %tr
-      %td= post.title
-      %td= post.content
-      %td= post.published
-      %td= link_to 'Show', post
-      %td= link_to 'Edit', edit_post_path(post)
-      %td= link_to 'Destroy', post, :confirm => 'Are you sure?', :method => :delete
-
-%br
+- @posts.each do |post|
+  .post
+    %hgroup
+      %h2= link_to post.title, post
+      %h3.quiet
+        = post.published
+        - if can? :edit, post
+          = link_to '(edit)', edit_post_path(post)
+        -if can? :destroy, post
+          = link_to 'Destroy', post, confirm: 'Delete Post?', method: :delete
+    .post-body
+      :markdown
+        #{post.content}
 
 - if can? :create, Post
   = link_to 'New Post', new_post_path

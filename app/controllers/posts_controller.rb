@@ -3,6 +3,7 @@ class PostsController < ApplicationController
 
   # GET /posts
   # GET /posts.json
+  # TODO: Add pagination
   def index
     @posts = Post.all
 
