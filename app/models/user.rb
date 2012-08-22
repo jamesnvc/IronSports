@@ -8,8 +8,15 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me,
     :first_name, :last_name, :birthdate, :studying, :graduating, :bodyweight,
     :gender, :weight_class
+  attr_protected :is_admin
 
   validates_format_of :gender, with: /\A(M|F)\z/, message: "M or F for gender"
+  validates_numericality_of :bodyweight
+  validates_uniqueness_of :email
+
+  def admin?
+    return self.is_admin
+  end
 
   def name
     if not first_name and not last_name
