@@ -8,6 +8,8 @@ UofTIronSports::Application.routes.draw do
 
   match 'leaderboard' => 'pages#show', name: 'leaderboard', as: 'leaderboard'
 
+  match 'resources/*path' => redirect('http://uoftironsports.wordpress.com/resources/%{path}')
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
