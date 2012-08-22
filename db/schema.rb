@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120822162649) do
+ActiveRecord::Schema.define(:version => 20120822165525) do
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "",    :null => false
@@ -35,6 +35,9 @@ ActiveRecord::Schema.define(:version => 20120822162649) do
     t.string   "weight_class"
     t.string   "gender",                 :default => "M"
     t.boolean  "is_admin",               :default => false
+    t.decimal  "squat_max"
+    t.decimal  "bench_max"
+    t.decimal  "deadlift_max"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
