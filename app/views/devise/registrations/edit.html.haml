@@ -2,34 +2,42 @@
   Edit #{resource_name.to_s.humanize}
 = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|
   = devise_error_messages!
-  %div.twocol
-    %div.left
+  %h3 Basic Info
+  .twocol
+    .left
       = f.label :first_name
-      %br/
       = f.text_field :first_name
-    %div.right
+      %br/
+    .right
       = f.label :last_name
-      %br/
       = f.text_field :last_name
-  %div.twocol
-    %div.left
-      = f.label :studying
       %br/
+  .twocol
+    .left
+      = f.label :studying
       = f.text_field :studying
-    %div.right
+      %br/
+    .right
       = f.label :graduating
       %i (e.g. 1T4)
-      %br/
       = f.text_field :graduating
-  %div.twocol
-    %div.left
+      %br/
+      = f.label :birthdate
+      - current_year = Time.now.year
+      = f.date_select :birthdate, start_year: current_year - 50, end_year: current_year - 14
+      %br/
+  %h3 Lifting Info
+  .twocol
+    .left
+      = f.label :gender
+      -# TODO: Javascript-ify this to change the weight class thing
+      = f.select :gender, ['M', 'F']
+      %br/
       = f.label :bodyweight
       %i (in kilograms)
-      %br/
       = f.number_field :bodyweight
-    %div.right
-      = f.label :weight_class
       %br/
+      = f.label :weight_class
       - weight_classes = []
       - if resource.gender.match /\Am/i
         -# Male weight classes
@@ -38,18 +46,20 @@
         -# Female weight classes
         - weight_classes = ['43 kg', '47 kg', '52 kg', '57 kg', '63 kg', '72 kg', '84 kg', '84+ kg']
       = f.select :weight_class, weight_classes
-  %div.twocol
-    %div.left
-      = f.label :gender
       %br/
-      -# TODO: Javascript-ify this to change the weight class thing
-      = f.select :gender, ['M', 'F']
-    %div.right
-      = f.label :birthdate
+    .right
+      = f.label :squat_max
+      %i (in kilograms)
+      = f.number_field :squat_max
       %br/
-      - current_year = Time.now.year
-      = f.date_select :birthdate, start_year: current_year - 50, end_year: current_year - 14
-  .clear
+      = f.label :bench_max
+      %i (in kilograms)
+      = f.number_field :bench_max
+      %br/
+      = f.label :deadlift_max
+      %i (in kilograms)
+      = f.number_field :deadlift_max
+      %br/
   %hr/
   %div
     = f.label :email
