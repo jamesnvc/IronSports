@@ -4,21 +4,21 @@
     %tr
       %th Name
       %th Bodyweight
-      %th Wilks Coefficient
+      %th Weightclass
       %th Squat
       %th Bench
       %th Deadlift
       %th Total
-      %th Wilks Total
+      %th= link_to 'Wilks Total', "http://en.wikipedia.org/wiki/Wilks_Coefficient"
   %tbody
-    - User.all.each do |user|
+    - User.all.sort_by(&:wilks_total).reverse.each do |user|
       - next if user.admin? or user.info_missing?
       %tr
-        %td= user.name
-        %td= user.bodyweight
-        %td= "%0.3f" %  user.wilks
-        %td= user.squat_max
-        %td= user.bench_max
-        %td= user.deadlift_max
+        %td= link_to user.name, user_path(user)
+        %td= user.mass
+        %td= user.weight_class
+        %td= user.squat
+        %td= user.bench
+        %td= user.deadlift
         %td= user.total
-        %td= "%0.3f" % user.wilks_total
+        %td= user.wilks
