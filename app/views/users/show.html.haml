@@ -1,0 +1,29 @@
+%h2
+  Profile Page for
+  = @user.name
+%p
+  Studying
+  = @user.studying
+  , graduating class of
+  = @user.graduating
+%dl
+  %dt Age
+  %dd= @user.age
+  %dt Sex
+  %dd= @user.sex
+  %dt Bodyweight
+  %dd= @user.mass
+  %dt Weight Class
+  %dd= @user.weight_class
+%h3 Lifts
+%dl
+  %dt Squat
+  %dd= @user.squat
+  %dt Bench
+  %dd= @user.bench
+  %dt Deadlift
+  %dd= @user.deadlift
+  %dt Total
+  %dt= @user.total
+  %dt Wilks Total
+  %dd= @user.wilks
