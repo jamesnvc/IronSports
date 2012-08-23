@@ -53,6 +53,5 @@ module UofTIronSports
     # Middleware to strip www
     config.autoload_paths += %W(#{config.root}/lib)
     config.middleware.use "NoWww"
-    config.middleware.use Rack::Pjax
   end
 end
