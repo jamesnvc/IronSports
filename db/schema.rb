@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120822195810) do
+ActiveRecord::Schema.define(:version => 20120823191100) do
 
   create_table "posts", :force => true do |t|
     t.string   "title"
@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(:version => 20120822195810) do
     t.decimal  "squat_max"
     t.decimal  "bench_max"
     t.decimal  "deadlift_max"
+    t.integer  "registration_number"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

@@ -7,11 +7,13 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me,
     :first_name, :last_name, :birthdate, :studying, :graduating, :bodyweight,
-    :gender, :weight_class, :squat_max, :bench_max, :deadlift_max
+    :gender, :weight_class, :squat_max, :bench_max, :deadlift_max,
+    :registration_number
   attr_protected :is_admin
 
   validates_format_of :gender, with: /\A(M|F)\z/, message: "M or F for gender"
   validates_uniqueness_of :email
+  validates_uniqueness_of :registration_number
 
   def admin?
     return self.is_admin
