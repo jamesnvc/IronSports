@@ -16,14 +16,14 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :registration_number
 
   def admin?
-    return self.is_admin
+    self.is_admin
   end
 
   def info_missing?
     [bodyweight, squat_max, bench_max, deadlift_max].any? &:nil?
   end
 
-  def wilks
+  def wilks_coeff
     return 0 if not self.bodyweight
     coeffs = {
         'M' => {
@@ -54,12 +54,24 @@ class User < ActiveRecord::Base
     )
   end
 
-  def total
-    return [ squat_max || 0, bench_max || 0, deadlift_max || 0 ].sum
+  def numeric_total
+    [ squat_max || 0, bench_max || 0, deadlift_max || 0 ].sum
   end
 
   def wilks_total
-    return wilks * total
+    wilks_coeff * numeric_total
+  end
+
+  def total
+    numeric_total.to_s + " kg"
+  end
+
+  def mass
+    bodyweight.to_s + " kg"
+  end
+
+  def wilks
+    "%0.3f" % wilks_total
   end
 
   def name
@@ -69,4 +81,18 @@ class User < ActiveRecord::Base
       [ first_name || '', last_name || ''].join(' ').strip
     end
   end
+
+  def age
+    (Time.now.to_s(:number).to_i - birthdate.to_time.to_s(:number).to_i) / 10e9.to_i
+  end
+
+  def sex
+    gender == 'M' ? 'Male' : 'Female'
+  end
+
+  for lift in [:squat_max, :bench_max, :deadlift_max] do
+    name = lift.to_s.sub(/_max$/, '').intern
+    define_method(name) { self.send(lift).to_s + " kg" }
+  end
+
 end
