@@ -7,7 +7,9 @@ UofTIronSports::Application.routes.draw do
 
   root to: 'pages#show', name: 'main'
 
-  match 'leaderboard' => 'pages#show', name: 'leaderboard', as: 'leaderboard'
+  for page in %w(leaderboard contact calendar media about) do
+    match page => 'pages#show', name: page, as: page
+  end
 
   match 'resources/*path' => redirect('http://uoftironsports.wordpress.com/resources/%{path}')
 
