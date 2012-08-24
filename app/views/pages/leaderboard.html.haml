@@ -1,7 +1,8 @@
 %h1 Leaderboard
-%table.stats
+%table.table
   %thead
     %tr
+      %th Rank
       %th Name
       %th Bodyweight
       %th Weightclass
@@ -9,11 +10,13 @@
       %th Bench
       %th Deadlift
       %th Total
-      %th= link_to 'Wilks Total', "http://en.wikipedia.org/wiki/Wilks_Coefficient"
+      %th
+        Wilks Total
+        = link_to '[?]', "http://en.wikipedia.org/wiki/Wilks_Coefficient"
   %tbody
-    - User.all.sort_by(&:wilks_total).reverse.each do |user|
-      - next if user.admin? or user.info_missing?
+    - User.lifters.sort_by(&:wilks_total).reverse.each_with_index do |user,i|
       %tr
+        %td= i + 1
         %td= link_to user.name, user_path(user)
         %td= user.mass
         %td= user.weight_class
