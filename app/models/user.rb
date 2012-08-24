@@ -71,7 +71,11 @@ class User < ActiveRecord::Base
   end
 
   def mass
-    bodyweight.to_s + " kg"
+    if bodyweight
+      bodyweight.to_s + " kg"
+    else
+      'Not given'
+    end
   end
 
   def wilks
@@ -87,15 +91,20 @@ class User < ActiveRecord::Base
   end
 
   def age
-    (Time.now.to_s(:number).to_i - birthdate.to_time.to_s(:number).to_i) / 10e9.to_i
+    if birthdate
+      (Time.now.to_s(:number).to_i - birthdate.to_time.to_s(:number).to_i) / 10e9.to_i
+    else
+      "Not given"
+    end
   end
 
   def sex
     gender == 'M' ? 'Male' : 'Female'
   end
 
-  for lift in [:squat_max, :bench_max, :deadlift_max] do
+  [:squat_max, :bench_max, :deadlift_max].each do |lift|
     name = lift.to_s.sub(/_max$/, '').intern
+    puts "Defining method #{name}"
     define_method(name) { self.send(lift).to_s + " kg" }
   end
 
