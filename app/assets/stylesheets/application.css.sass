@@ -16,11 +16,11 @@
   :float right
   :text-align left
 
-.quiet
-  :color gray
-  :font-size 0.8em
+.big
+  :font-size 1.5em
 
 $bg-color : #03030a
+$red : #9d261d
 body
   :text-align center
   :background-color $bg-color
@@ -48,11 +48,20 @@ section.header
     //:float left
     img
       :height 5em
+
 nav
   :font-family 'HeadlineOneHPLHS', sans-serif
-  :font-size 1.5em
+  :font-weight normal
+nav.topnav
+  :font-size 1.2em
+  .big
+    :font-size 1.5em
+nav.bottomnav.navbar
+  :font-size 1.7em
+  :background-color white
+  li
+    a
+      :color black
 
-.twocol
-  :overflow hidden
-  :width 50%
-  :margin 0 auto
+#sidebar
+  :background-color $red

@@ -1,29 +1,34 @@
 %h2
   Profile Page for
   = @user.name
-%p
-  Studying
-  = @user.studying
-  , graduating class of
-  = @user.graduating
-%dl
-  %dt Age
-  %dd= @user.age
-  %dt Sex
-  %dd= @user.sex
-  %dt Bodyweight
-  %dd= @user.mass
-  %dt Weight Class
-  %dd= @user.weight_class
-%h3 Lifts
-%dl
-  %dt Squat
-  %dd= @user.squat
-  %dt Bench
-  %dd= @user.bench
-  %dt Deadlift
-  %dd= @user.deadlift
-  %dt Total
-  %dt= @user.total
-  %dt Wilks Total
-  %dd= @user.wilks
+.row.span10
+  %p
+    Studying
+    = @user.studying or '??'
+    , graduating class of
+    = @user.graduating or '??'
+.row
+  .span5
+    %h3 Basic Info
+    %dl.dl-horizontal
+      %dt Age
+      %dd= @user.age
+      %dt Sex
+      %dd= @user.sex
+      %dt Bodyweight
+      %dd= @user.mass
+      %dt Weight Class
+      %dd= @user.weight_class or 'Not given'
+  .span5
+    %h3 Lifts
+    %dl.dl-horizontal
+      %dt Squat
+      %dd= @user.squat
+      %dt Bench
+      %dd= @user.bench
+      %dt Deadlift
+      %dd= @user.deadlift
+      %dt Total
+      %dd= @user.total
+      %dt Wilks Total
+      %dd= @user.wilks
