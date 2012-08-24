@@ -15,6 +15,10 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :email
   validates_uniqueness_of :registration_number
 
+  scope :lifters, conditions: [
+    'squat_max IS NOT NULL AND bench_max IS NOT NULL AND ' +
+    'deadlift_max IS NOT NULL' ]
+
   def admin?
     self.is_admin
   end
