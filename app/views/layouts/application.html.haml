@@ -49,9 +49,16 @@
               %li.span2{class: request.path == leaderboard_path ? 'active' : ''}= link_to 'Leaderboard', leaderboard_path
               %li.span2{class: request.path == contact_path ? 'active' : ''}= link_to 'Contact', contact_path
 
-          %section.notify.span8.offset1
+          %section#tweet.row-fluid.span10
+            %p
+              Latest: &ldquo;
+              != latest_tweet_text
+              &rdquo;
+              = link_to '[Click to read more]', latest_tweet_url
+
+          %section.notify.span8.offset1.row-fluid
             = bootstrap_flash
 
-          %section#main.span10
+          %section#main.span10.row-fluid
             = yield
     = javascript_include_tag "application"
