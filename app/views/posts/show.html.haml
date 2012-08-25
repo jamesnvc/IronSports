@@ -1,15 +1,16 @@
-.post
-  %hgroup.row
-    %h2.span2= link_to @post.title, @post
-    %h3.quiet.span2.offset2
-      Published
+.post.span12
+  %hgroup.row-fluid
+    %h2.span3= link_to @post.title, @post
+    %h3.quiet.span6.offset3
       = @post.published
       - if can? :edit, @post
         = link_to '(edit)', edit_post_path(@post)
       -if can? :destroy, @post
         = link_to 'Destroy', @post, confirm: 'Delete Post?', method: :delete
-  .post-body.row.offset1.span5
+  .post-body.rowfluid.offset2.span8
     :markdown
       #{@post.content}
 
-= link_to 'Back', posts_path
+.row-fluid.span8.offset1
+  %h3
+    = link_to 'Back', posts_path

@@ -1,20 +1,20 @@
-%h1.span4.offset1 News
+%h1 News
 
 - if can? :create, Post
-  .span10
+  .span12
     = link_to 'New Post', new_post_path, class: 'span5'
 
-.row
+.row-fluid
 - @posts.each do |post|
   .post
-    %hgroup.row
-      %h2.span2= link_to post.title, post
-      %h3.quiet.span2.offset2
+    %hgroup.row-fluid
+      %h2.span3= link_to post.title, post
+      %h3.quiet.span6.offset3
         = post.published
         - if can? :edit, post
           = link_to '(edit)', edit_post_path(post)
         -if can? :destroy, post
           = link_to 'Destroy', post, confirm: 'Delete Post?', method: :delete
-    .post-body.row.offset1.span5
+    .post-body.rowfluid.offset2.span8
       :markdown
         #{post.content}

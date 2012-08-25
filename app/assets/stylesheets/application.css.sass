@@ -21,6 +21,8 @@
 
 $bg-color : #03030a
 $red : #9d261d
+$light-gray : #a0a0a0
+
 body
   :text-align center
   :background-color $bg-color
@@ -52,16 +54,26 @@ section.header
 nav
   :font-family 'HeadlineOneHPLHS', sans-serif
   :font-weight normal
+  ul
+    :width 100%
 nav.topnav
   :font-size 1.2em
   .big
     :font-size 1.5em
 nav.bottomnav.navbar
   :font-size 1.7em
-  :background-color white
-  li
-    a
-      :color black
+  ul
+    :background-color white
+    li
+      a
+        :color black
 
 #sidebar
   :background-color $red
+  a
+    :color $light-gray
+    &:visited
+      :color $light-gray
+    &:hover
+      :color black
+

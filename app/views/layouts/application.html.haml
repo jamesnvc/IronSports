@@ -6,13 +6,16 @@
     = stylesheet_link_tag "application", media: 'all'
     = csrf_meta_tags
   %body
-    .container
-      .row
-        %header
-          %hgroup.logo.span2
+    .container-fluid
+      .row-fluid
+        .span2
+          %hgroup.logo
             %a(href="/")
               = image_tag 'logo.jpg'
-          %nav.row.span10.navbar.topnav
+          %section#sidebar
+            = render 'shared/sidebar'
+        .span10.navigation
+          %nav.row-fluid.span10.navbar.topnav
             %ul.nav.nav-pills
               %li= link_to 'Facebook', "http://facebook.com/UofTIronsports"
               %li= link_to 'Twitter', "http://twitter.com/UofTIronsports"
@@ -21,45 +24,34 @@
               %li= link_to 'Mailing List', "http://eepurl.com/oqcN1"
               - if not user_signed_in?
                 %li= link_to 'Sign Up', new_user_registration_path
-                %li.dropdown
-                  %a(class="dropdown-toggle" data-target='#' href='/' data-toggle="dropdown")
-                    Sign In <b class="caret"></b>
-                  %ul.dropdown-menu
-                    %li
-                      = form_tag user_session_path, method: :post do
-                        = label_tag :user_email, 'Email'
-                        = email_field_tag 'user[email]'
-                        = label_tag :user_password, 'Password'
-                        = password_field_tag 'user[password]'
-                        = button_tag type: 'submit', class: 'btn btn-inverse' do
-                          Log In
+                = form_tag user_session_path, method: :post, class: 'navbar-form pull-right span4' do
+                  = email_field_tag 'user[email]', nil, placeholder: 'Email', class: 'span4'
+                  = password_field_tag 'user[password]', nil, placeholder: 'Password', class: 'span4'
+                  = button_tag type: 'submit', class: 'btn btn-inverse' do
+                    Log In
               - else
-                %li.dropdown
+                %li.dropdown.pull-right
                   %a(class="dropdown-toggle big" data-target='#' href="/" data-toggle="dropdown")
                     Account <b class="caret"></b>
-                  %ul.dropdown-menu(role="menu")
+                  %ul.dropdown-menu.pull-right(role="menu")
                     %li=  link_to 'View Profile', user_path(current_user)
                     %li= link_to 'Manage Account', edit_user_registration_path
                     %li
                       = form_tag destroy_user_session_path, method: :delete do
                         = button_tag type: 'submit', class: 'btn btn-inverse' do
                           Sign Out
-          %nav.row.span10.navbar.bottomnav
+          %nav.row-fluid.span10.navbar.bottomnav
             %ul.nav.nav-pills
-              %li{class: request.path == posts_path ? 'active' : ''}= link_to 'News', posts_path
-              %li{class: request.path == about_path ? 'active' : ''}= link_to 'About', about_path
-              %li{class: request.path == media_path ? 'active' : ''}= link_to 'Media', media_path
-              %li{class: request.path == calendar_path ? 'active' : ''}= link_to 'Calendar', calendar_path
-              %li{class: request.path == leaderboard_path ? 'active' : ''}= link_to 'Leaderboard', leaderboard_path
-              %li{class: request.path == contact_path ? 'active' : ''}= link_to 'Contact', contact_path
+              %li.span2{class: request.path == posts_path ? 'active' : ''}= link_to 'News', posts_path
+              %li.span2{class: request.path == about_path ? 'active' : ''}= link_to 'About', about_path
+              %li.span2{class: request.path == media_path ? 'active' : ''}= link_to 'Media', media_path
+              %li.span2{class: request.path == calendar_path ? 'active' : ''}= link_to 'Calendar', calendar_path
+              %li.span2{class: request.path == leaderboard_path ? 'active' : ''}= link_to 'Leaderboard', leaderboard_path
+              %li.span2{class: request.path == contact_path ? 'active' : ''}= link_to 'Contact', contact_path
 
-      %section.notify.row.span8.offset2
-        = bootstrap_flash
+          %section.notify.span8.offset1
+            = bootstrap_flash
 
-      .row
-        %section#sidebar.span2
-          = render 'shared/sidebar'
-
-        %section#main.span10
-          = yield
+          %section#main.span10
+            = yield
     = javascript_include_tag "application"

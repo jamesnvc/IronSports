@@ -1,14 +1,14 @@
 %h2
   Profile Page for
   = @user.name
-.row.span10
+.row-fluid.span12
   %p
     Studying
     = @user.studying or '??'
     , graduating class of
     = @user.graduating or '??'
-.row
-  .span5
+.row-fluid
+  .span6
     %h3 Basic Info
     %dl.dl-horizontal
       %dt Age
@@ -19,7 +19,7 @@
       %dd= @user.mass
       %dt Weight Class
       %dd= @user.weight_class or 'Not given'
-  .span5
+  .span6
     %h3 Lifts
     %dl.dl-horizontal
       %dt Squat
