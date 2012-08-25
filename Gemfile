@@ -9,6 +9,7 @@ gem 'devise', '~> 2.0.4'
 gem 'cancan', '~> 1.6.7'
 gem 'haml-rails', "~> 0.3.4"
 gem 'redcarpet', '~> 1.17.2'
+gem 'twitter'
 
 # Gems used only for assets and not required
 # in production environments by default.
