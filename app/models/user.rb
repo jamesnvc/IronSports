@@ -104,7 +104,6 @@ class User < ActiveRecord::Base
 
   [:squat_max, :bench_max, :deadlift_max].each do |lift|
     name = lift.to_s.sub(/_max$/, '').intern
-    puts "Defining method #{name}"
     define_method(name) { self.send(lift).to_s + " kg" }
   end
 

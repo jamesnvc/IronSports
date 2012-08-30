@@ -43,17 +43,24 @@
                           Sign Out
           %nav.row-fluid.span10.navbar.bottomnav
             %ul.nav.nav-pills
-              %li.span2{class: request.path == posts_path ? 'active' : ''}= link_to 'News', posts_path
-              %li.span2{class: request.path == about_path ? 'active' : ''}= link_to 'About', about_path
-              %li.span2{class: request.path == joinus_path ? 'active' : ''}= link_to 'Join us', joinus_path
-              %li.span2{class: request.path == media_path ? 'active' : ''}= link_to 'Media', media_path
-              %li.span2{class: request.path == calendar_path ? 'active' : ''}= link_to 'Calendar', calendar_path
-              %li.span2{class: request.path == leaderboard_path ? 'active' : ''}= link_to 'Leaderboard', leaderboard_path
-              %li.span2{class: request.path == contact_path ? 'active' : ''}= link_to 'Contact', contact_path
+              %li{class: request.path == posts_path ? 'active' : ''}= link_to 'News', posts_path
+              %li{class: request.path == about_path ? 'active' : ''}= link_to 'About', about_path
+              %li{class: request.path == joinus_path ? 'active' : ''}= link_to 'Join us', joinus_path
+              %li{class: request.path == media_path ? 'active' : ''}= link_to 'Media', media_path
+              %li{class: request.path == calendar_path ? 'active' : ''}= link_to 'Calendar', calendar_path
+              %li{class: request.path == leaderboard_path ? 'active' : ''}= link_to 'Leaderboard', leaderboard_path
+              %li{class: request.path == contact_path ? 'active' : ''}= link_to 'Contact', contact_path
 
-          %section.notify.span8.offset1
+          %section#tweet.row-fluid.span10
+            %p
+              Latest: &ldquo;
+              != latest_tweet_text
+              &rdquo;
+              = link_to '[Click to read more]', latest_tweet_url
+
+          %section.notify.span8.offset1.row-fluid
             = bootstrap_flash
 
-          %section#main.span10
+          %section#main.span10.row-fluid
             = yield
     = javascript_include_tag "application"
