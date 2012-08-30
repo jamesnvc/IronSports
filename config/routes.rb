@@ -7,7 +7,7 @@ UofTIronSports::Application.routes.draw do
 
   root to: 'pages#show', name: 'main'
 
-  for page in %w(leaderboard contact calendar media about) do
+  for page in %w(leaderboard contact calendar media about joinus) do
     match page => 'pages#show', name: page, as: page
   end
 
