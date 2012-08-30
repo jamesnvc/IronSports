@@ -44,6 +44,7 @@
             %ul.nav.nav-pills
               %li.span2{class: request.path == posts_path ? 'active' : ''}= link_to 'News', posts_path
               %li.span2{class: request.path == about_path ? 'active' : ''}= link_to 'About', about_path
+              %li.span2{class: request.path == joinus_path ? 'active' : ''}= link_to 'Join us', joinus_path
               %li.span2{class: request.path == media_path ? 'active' : ''}= link_to 'Media', media_path
               %li.span2{class: request.path == calendar_path ? 'active' : ''}= link_to 'Calendar', calendar_path
               %li.span2{class: request.path == leaderboard_path ? 'active' : ''}= link_to 'Leaderboard', leaderboard_path
