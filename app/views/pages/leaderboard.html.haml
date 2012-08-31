@@ -17,7 +17,8 @@
       %th Total
       %th
         Wilks Total
-        = link_to '[?]', "http://en.wikipedia.org/wiki/Wilks_Coefficient"
+        %a(href="http://en.wikipedia.org/wiki/Wilks_Coefficient")
+          %i.icon-question-sign
   %tbody
     - User.lifters.sort_by(&:wilks_total).reverse.each_with_index do |user,i|
       %tr
