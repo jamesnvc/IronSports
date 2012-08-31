@@ -2,7 +2,8 @@
 %ul
 	%li &nbsp;
 %p
-	%button.btn.btn-large.btn-inverse{:type => "button"} Support Us
+	= form_tag supportus_path, method: 'get' do
+		%button.btn.btn-large.btn-inverse(type="submit") Support us
 %ul
 	%li 
 	%li Download a copy of our
