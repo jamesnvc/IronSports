@@ -15,7 +15,7 @@
           %section#sidebar
             = render 'shared/sidebar'
         .span10.navigation
-          %nav.row-fluid.span10.navbar.topnav
+          %nav.row-fluid.span11.navbar.topnav
             %ul.nav.nav-pills
               %li= link_to 'Facebook', "http://facebook.com/UofTIronsports"
               %li= link_to 'Twitter', "http://twitter.com/UofTIronsports"
@@ -23,7 +23,7 @@
               %li= link_to 'YouTube', "http://youtube.com/user/UofTIronsports"
               %li= link_to 'Mailing List', "http://eepurl.com/oqcN1"
               - if not user_signed_in?
-                %li.big= link_to 'Sign Up', new_user_registration_path
+                %li.big.pull-right= link_to 'Sign Up', new_user_registration_path
                 = form_tag user_session_path, method: :post, class: 'navbar-form pull-right span4' do
                   = email_field_tag 'user[email]', nil, placeholder: 'Email', class: 'span4'
                   = password_field_tag 'user[password]', nil, placeholder: 'Password', class: 'span4'
@@ -40,7 +40,7 @@
                       = form_tag destroy_user_session_path, method: :delete do
                         = button_tag type: 'submit', class: 'btn btn-inverse' do
                           Sign Out
-          %nav.row-fluid.span10.navbar.bottomnav
+          %nav.row-fluid.span11.navbar.bottomnav
             %ul.nav.nav-pills
               %li{class: request.path == posts_path ? 'active' : ''}= link_to 'News', posts_path
               %li{class: request.path == about_path ? 'active' : ''}= link_to 'About', about_path
@@ -50,7 +50,7 @@
               %li{class: request.path == leaderboard_path ? 'active' : ''}= link_to 'Leaderboard', leaderboard_path
               %li{class: request.path == contact_path ? 'active' : ''}= link_to 'Contact', contact_path
 
-          %section#tweet.row-fluid.span10
+          %section#tweet.row-fluid.span11
             %p
               Latest: &ldquo;
               != latest_tweet_text
@@ -60,6 +60,6 @@
           %section.notify.span8.offset1.row-fluid
             = bootstrap_flash
 
-          %section#main.span10.row-fluid
+          %section#main.span11.row-fluid
             = yield
     = javascript_include_tag "application"
