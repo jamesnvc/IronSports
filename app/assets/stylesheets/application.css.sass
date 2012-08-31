@@ -23,13 +23,15 @@ $bg-color : #03030a
 $red : #9d261d
 $light-gray : #a0a0a0
 
+$header-font : 'HeadlineOneHPLHS', sans-serif
+
 body
   :text-align center
   :background-color $bg-color
   :color white
 
 h1, h2, h3, h4
-  :font-family 'HeadlineOneHPLHS', sans-serif
+  :font-family $header-font
   :font-weight normal
 
 h1
@@ -52,7 +54,7 @@ section.header
       :height 5em
 
 nav
-  :font-family 'HeadlineOneHPLHS', sans-serif
+  :font-family $header-font
   :font-weight normal
   ul
     :width 100%
@@ -80,7 +82,7 @@ nav.bottomnav.navbar
       :color white
 
   h1, h2, h3, h4
-  :font-family 'HeadlineOneHPLHS', sans-serif
+  :font-family $header-font
   :font-weight normal 
   :letter-spacing 2px 
 
