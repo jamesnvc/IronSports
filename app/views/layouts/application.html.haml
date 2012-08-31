@@ -8,13 +8,13 @@
   %body
     .container-fluid
       .row-fluid
-        .span2
+        #sidecol.span2
           %hgroup.logo
             %a(href="/")
               = image_tag 'logo.jpg'
           %section#sidebar
             = render 'shared/sidebar'
-        .span10.navigation
+        #maincol.span10.navigation
           %nav.row-fluid.span11.navbar.topnav
             %ul.nav.nav-pills
               %li= link_to 'Facebook', "http://facebook.com/UofTIronsports"

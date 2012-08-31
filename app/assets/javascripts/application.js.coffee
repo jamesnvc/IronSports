@@ -8,3 +8,10 @@
 #= require jquery_ujs
 #= require twitter/bootstrap
 #= require_tree .
+
+jQuery ->
+  sideHeight = parseInt $('#sidecol').css('height'), 10
+  mainHeight = parseInt $('#maincol').css('height'), 10
+  height = Math.max(sideHeight, mainHeight) + "px"
+  $('#sidecol').height(height)
+
