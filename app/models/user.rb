@@ -12,8 +12,12 @@ class User < ActiveRecord::Base
   attr_protected :is_admin
 
   validates_format_of :gender, with: /\A(M|F)\z/, message: "M or F for gender"
-  validates_uniqueness_of :email
+  validates_presence_of :registration_number
   validates_uniqueness_of :registration_number
+  validates :registration_number, inclusion: {
+    in: ( Rails.cache.read('member_numbers') or [] ),
+    message: "%{value} is not a valid registration number"
+  }
 
   scope :lifters, conditions: [
     'squat_max IS NOT NULL AND bench_max IS NOT NULL AND ' +

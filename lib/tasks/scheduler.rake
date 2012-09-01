@@ -6,3 +6,10 @@ task :update_twitter => :environment do
     ApplicationHelper.get_latest_tweet
     puts "done."
 end
+
+desc "Task called by scheduler to update list of valid member numbers"
+task :update_member_numbers => :environment do
+  puts "Updating valid number list..."
+  ApplicationHelper.update_member_numbers
+  puts "done."
+end
