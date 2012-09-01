@@ -36,6 +36,7 @@ module ApplicationHelper
     open(ENV['MEMBER_WHITELIST_URL']).each do |number|
       valid_numbers << number.to_i
     end
+    puts "Read #{valid_numbers.length} valid member ids form #{ENV['MEMBER_WHITELIST_URL']}"
     Rails.cache.write 'member_numbers', valid_numbers
   end
 
