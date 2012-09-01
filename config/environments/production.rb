@@ -60,4 +60,6 @@ UofTIronSports::Application.configure do
 
   config.action_mailer.default_url_options = { :host => 'uoftironsports.com' }
 
+  # Use Dalli memcache
+  config.cache_store = :dalli_store
 end
