@@ -9,6 +9,13 @@
 #= require twitter/bootstrap
 #= require_tree .
 
-jQuery ->
-  $('#sidecol').height $(document).height()
+resize_sidebar = ->
+  if $(window).width() > 767
+    $('#sidecol').height Math.max($('#maincol').height() + $('footer').height() + 50, 800)
 
+jQuery ->
+  resize_sidebar()
+  $(window).resize ->
+    resize_sidebar()
+  $(window).bind 'orientationchange', (e) ->
+    resize_sidebar()
