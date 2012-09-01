@@ -1,3 +1,5 @@
+require 'open-uri'
+
 module ApplicationHelper
   def self.get_latest_tweet
     tweet = Twitter.user_timeline('uoftironsports', include_entities: true).first
@@ -27,6 +29,14 @@ module ApplicationHelper
   def latest_tweet_url
     return if not latest_tweet
     'http://twitter.com/uoftironsports/statuses/%d' % latest_tweet.id
+  end
+
+  def self.update_member_numbers
+    valid_numbers = []
+    open(ENV['MEMBER_WHITELIST_URL']).each do |number|
+      valid_numbers << number.to_i
+    end
+    Rails.cache.write 'member_numbers', valid_numbers
   end
 
 end
