@@ -75,22 +75,27 @@ nav.bottomnav.navbar
 #sidebar
   :background-color $red
   :height 100%
+  :font-family $header-font
+  :font-weight normal
+  :letter-spacing 2px
+  :margin 0
   @media all and (max-width: 767px)
-    :background-color green
+    li
+      :display inline
   @media all and (min-width: 768px)
     :min-height 800px
+    li
+      img
+        :margin-top 2em
+  h4
+    :font-size 1.1em
+    :margin-bottom 0
   a
     :color black
     &:visited
       :color $light-gray
     &:hover
       :color white
-
-  h1, h2, h3, h4
-  :font-family $header-font
-  :font-weight normal
-  :letter-spacing 2px
-  :margin 0
   button
     :font-family $header-font
     :font-size 1.5em
