@@ -2,6 +2,7 @@ module ApplicationHelper
   def self.get_latest_tweet
     tweet = Twitter.user_timeline('uoftironsports', include_entities: true).first
     urls = tweet.urls
+    puts "Got latest tweet #{tweet.text}, caching"
     Rails.cache.write 'tweet', tweet
     Rails.cache.write 'tweet_urls', urls
   end
