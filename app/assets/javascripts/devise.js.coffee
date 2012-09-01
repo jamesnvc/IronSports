@@ -14,11 +14,12 @@ jQuery ->
   $('#user_gender').change ->
     gender = $(this).val()
     $('#user_weight_class').empty().append(createOptions(weight_classes[gender]))
+    $('#user_bodyweight').change()
 
   $('#user_bodyweight').change ->
     weight = $(this).val()
     sex = $('#user_gender').val()
-    cls = ''
+    cls = weight_classes[sex][weight_classes[sex].length - 1]
     $.each weight_classes[sex], ->
       if weight <= parseInt this, 10
         cls = this
