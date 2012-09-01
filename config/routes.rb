@@ -5,7 +5,7 @@ UofTIronSports::Application.routes.draw do
   devise_for :users
   match 'users/:id' => 'users#show', as: 'user'
 
-  root to: 'pages#show', name: 'main'
+  root to: 'posts#index'
 
   for page in %w(leaderboard contact calendar media about joinus supportus) do
     match page => 'pages#show', name: page, as: page
