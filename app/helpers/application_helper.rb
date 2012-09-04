@@ -18,7 +18,9 @@ module ApplicationHelper
   end
 
   def latest_tweet_text
-    return if not latest_tweet
+    if latest_tweet.nil? or latest_tweet_entities.nil?
+      ApplicationHelper.get_latest_tweet
+    end
     txt = latest_tweet.text.clone
     latest_tweet_entities.each do |entity|
       txt[entity.indices[0]..entity.indices[1]] = link_to entity.display_url, entity.expanded_url
@@ -27,7 +29,9 @@ module ApplicationHelper
   end
 
   def latest_tweet_url
-    return if not latest_tweet
+    if latest_tweet.nil?
+      ApplicationHelper.get_latest_tweet
+    end
     'http://twitter.com/uoftironsports/statuses/%d' % latest_tweet.id
   end
 
