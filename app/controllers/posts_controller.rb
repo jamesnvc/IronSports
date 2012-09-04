@@ -5,7 +5,7 @@ class PostsController < ApplicationController
   # GET /posts.json
   # TODO: Add pagination
   def index
-    @posts = Post.all
+    @posts = Post.order_by_newest
 
     respond_to do |format|
       format.html # index.html.erb
