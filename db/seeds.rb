@@ -8,6 +8,6 @@
 admin = User.create(email: 'admin@uoftironsports.ca',
                     password: ENV['ADMIN_PASS'], password_confirmation: ENV['ADMIN_PASS'],
                     first_name: 'Amanda', last_name: 'Santos',
-                    gender: 'F')
+                    gender: 'F', registration_number: 0)
 admin.is_admin = true
 admin.save!
