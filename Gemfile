@@ -11,6 +11,7 @@ gem 'haml-rails', "~> 0.3.4"
 gem 'redcarpet', '~> 1.17.2'
 gem 'twitter'
 gem 'twitter-bootstrap-rails'
+gem 'newrelic_rpm'
 
 # Gems used only for assets and not required
 # in production environments by default.
