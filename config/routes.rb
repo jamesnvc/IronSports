@@ -11,7 +11,8 @@ UofTIronSports::Application.routes.draw do
     match page => 'pages#show', name: page, as: page
   end
 
-  match 'resources/*path' => redirect('http://uoftironsports.wordpress.com/resources/%{path}')
+  match 'resources' => redirect('http://uoftironsports.wordpress.com/resources')
+  match 'members' => redirect('http://uoftironsports.wordpress.com/members')
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
