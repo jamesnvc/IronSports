@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
   validates_presence_of :registration_number
   validates_uniqueness_of :registration_number
   validates :registration_number, inclusion: {
-    in: ApplicationHelper.get_member_numbers,
+    in: proc { ApplicationHelper.get_member_numbers },
     message: "%{value} is not a valid registration number"
   }
 
