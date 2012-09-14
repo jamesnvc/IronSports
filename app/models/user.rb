@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
   validates_presence_of :registration_number
   validates_uniqueness_of :registration_number
   validates :registration_number, inclusion: {
-    in: ( Rails.cache.read('member_numbers') or [] ),
+    in: ApplicationHelper.get_member_numbers,
     message: "%{value} is not a valid registration number"
   }
 
