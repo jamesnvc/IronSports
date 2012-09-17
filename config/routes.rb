@@ -1,5 +1,7 @@
 UofTIronSports::Application.routes.draw do
 
+  ActiveAdmin.routes(self)
+
   resources :posts
 
   devise_for :users
