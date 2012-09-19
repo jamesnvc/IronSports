@@ -76,9 +76,9 @@ ActiveAdmin.register User do
         li link_to "Edit", edit_admin_user_path(user)
         li link_to("Delete", admin_user_path(user), confirm: 'Delete User?', method: :delete)
         if user.admin?
-          li link_to 'Revoke Admin', unmake_admin_admin_user_path(user), method: :post
+          li link_to 'Revoke Admin', unmake_admin_admin_user_path(user), method: :post, confirm: 'Revoke admin?'
         else
-          li link_to 'Make Admin', make_admin_admin_user_path(user), method: :post
+          li link_to 'Make Admin', make_admin_admin_user_path(user), method: :post, confirm: 'Make Admin?'
         end
       end
     end
