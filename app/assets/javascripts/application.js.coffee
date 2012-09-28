@@ -21,6 +21,7 @@ resize_sidebar = ->
 $(document).ready ->
   resize_sidebar()
   # Hack - maincol changes after resize_sidebar is called :/
+  # TODO: Watch for changes of #maincol height
   setTimeout resize_sidebar, 500
   $(window).resize ->
     resize_sidebar()
