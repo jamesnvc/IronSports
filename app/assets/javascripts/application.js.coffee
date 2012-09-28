@@ -11,10 +11,17 @@
 
 resize_sidebar = ->
   if $(window).width() > 767
+    console.log 'resizing sidebar', $('#sidecol').height(), $('#maincol').height()
     $('#sidecol').height Math.max($('#maincol').height() + $('footer').height() + 50, 800)
+  else
+    # If the window is now sufficiently small, remove the manual height we set
+    console.log 'Removing sidebar hegiht'
+    $('#sidecol').css 'height', ''
 
-jQuery ->
+$(document).ready ->
   resize_sidebar()
+  # Hack - maincol changes after resize_sidebar is called :/
+  setTimeout resize_sidebar, 500
   $(window).resize ->
     resize_sidebar()
   $(window).bind 'orientationchange', (e) ->
