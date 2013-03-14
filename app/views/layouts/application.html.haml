@@ -55,12 +55,13 @@
               %li{class: request.path == leaderboard_path ? 'active' : ''}= link_to 'Leaderboard', leaderboard_path
               %li{class: request.path == contact_path ? 'active' : ''}= link_to 'Contact', contact_path
 
-          %section#tweet.row-fluid.span11
-            %p
-              Latest: &ldquo;
-              != latest_tweet_text
-              &rdquo;
-              = link_to '[Click to read more]', latest_tweet_url
+          -#
+            %section#tweet.row-fluid.span11
+              %p
+                Latest: &ldquo;
+                != latest_tweet_text
+                &rdquo;
+                = link_to '[Click to read more]', latest_tweet_url
 
           %section.notify.span8.offset1.row-fluid
             = bootstrap_flash
