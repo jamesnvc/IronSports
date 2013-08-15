@@ -5,3 +5,12 @@ en:
   hello: "Hello world"
   active_admin:
     dashboard: "Dashboard"
+    filter: "Filter"
+    clear_filters: "Clear"
+    logout: "Logout"
+    search_field: "Search"
+    download: "Download"
+    edit_model: "Edit"
+    delete_model: "Delete"
+    batch_actions:
+      button_label: "Bulk Actions"
