@@ -9,7 +9,6 @@ gem 'devise', '~> 2.0.4'
 gem 'cancan', '~> 1.6.7'
 gem 'haml-rails', "~> 0.3.4"
 gem 'redcarpet', '~> 1.17.2'
-gem 'twitter'
 gem 'twitter-bootstrap-rails'
 gem 'newrelic_rpm'
 gem 'activeadmin'
