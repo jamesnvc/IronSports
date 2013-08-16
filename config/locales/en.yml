@@ -4,6 +4,7 @@
 en:
   hello: "Hello world"
   active_admin:
+    new_model: "Create"
     dashboard: "Dashboard"
     filter: "Filter"
     clear_filters: "Clear"
