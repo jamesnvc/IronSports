@@ -8,7 +8,7 @@
     , graduating class of
     = @user.graduating or '??'
 .row-fluid
-  .span6
+  .span4
     %h3 Basic Info
     %dl.dl-horizontal
       %dt Age
@@ -19,8 +19,8 @@
       %dd= @user.mass
       %dt Weight Class
       %dd= @user.weight_class or 'Not given'
-  .span6
-    %h3 Lifts
+  .span4
+    %h3 Powerlifts
     %dl.dl-horizontal
       %dt Squat
       %dd= @user.squat
@@ -32,3 +32,14 @@
       %dd= @user.total
       %dt Wilks Total
       %dd= @user.wilks
+  .span4
+    %h3 Olypmic Lifts
+    %dl.dl-horizontal
+      %dt Snatch
+      %dd= @user.snatch
+      %dt Clean &amp; Jerk
+      %dd= @user.clean_and_jerk
+      %dt Total
+      %dd= @user.olympic_total
+      %dt Sinclair Total
+      %dd= @user.sinclair

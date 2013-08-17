@@ -1,0 +1,27 @@
+
+%h1 Weightlifting Leaderboard
+%table.table
+  %thead
+    %tr
+      %th Rank
+      %th Name
+      %th Bodyweight
+      %th Weightclass
+      %th Snatch
+      %th Clean &amp; Jerk
+      %th Total
+      %th#sinclairinfo
+        Sinclair Total
+        %a(href="https://en.wikipedia.org/wiki/Sinclair_Coefficients" title="Sinclair Cofficients")
+          %i.icon-question-sign
+  %tbody
+    - User.oly_lifters.sort_by(&:sinclair_total).reverse.each_with_index do |user,i|
+      %tr
+        %td= i + 1
+        %td= link_to user.name, user_path(user)
+        %td= user.mass
+        %td= user.weight_class
+        %td= user.snatch
+        %td= user.clean_and_jerk
+        %td= user.olympic_total
+        %td= user.sinclair
