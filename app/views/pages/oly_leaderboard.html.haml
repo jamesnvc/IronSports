@@ -15,7 +15,7 @@
         %a(href="https://en.wikipedia.org/wiki/Sinclair_Coefficients" title="Sinclair Cofficients")
           %i.icon-question-sign
   %tbody
-    - User.oly_lifters.sort_by(&:wilks_total).reverse.each_with_index do |user,i|
+    - User.oly_lifters.sort_by(&:sinclair_total).reverse.each_with_index do |user,i|
       %tr
         %td= i + 1
         %td= link_to user.name, user_path(user)
