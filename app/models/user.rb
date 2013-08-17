@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me,
     :first_name, :last_name, :birthdate, :studying, :graduating, :bodyweight,
     :gender, :weight_class, :squat_max, :bench_max, :deadlift_max,
-    :registration_number
+    :snatch_max, :clean_and_jerk_max, :registration_number
   attr_protected :is_admin
 
   validates_format_of :gender, with: /\A(M|F)\z/, message: "M or F for gender"
@@ -23,12 +23,12 @@ class User < ActiveRecord::Base
     'squat_max IS NOT NULL AND bench_max IS NOT NULL AND ' +
     'deadlift_max IS NOT NULL' ]
 
+  scope :oly_lifters, conditions: [
+    'snatch_max IS NOT NULL AND clean_and_jerk_max IS NOT NULL'
+  ]
+
   def admin?
     self.is_admin
-  end
-
-  def info_missing?
-    [bodyweight, squat_max, bench_max, deadlift_max].any? &:nil?
   end
 
   def wilks_coeff
@@ -70,8 +70,45 @@ class User < ActiveRecord::Base
     wilks_coeff * numeric_total
   end
 
+  def wilks
+    "%0.3f" % wilks_total
+  end
+
   def total
     numeric_total.to_s + " kg"
+  end
+
+  def sinclair_coefficient
+    # Sinclair values for 2013
+    coeffs = {
+      'M' => {
+        a: 0.794358141,
+        b: 174.393,
+      },
+      'F' => {
+        a: 0.897260740,
+        b: 148.026,
+      }
+    }
+    c = coeffs[self.gender]
+    return 1 if self.bodyweight > c[:b]
+    return 10**( c[:a] * Math.log10(self.bodyweight / c[:b])**2 )
+  end
+
+  def olypmic_numeric_total
+    [ snatch_max || 0, clean_and_jerk_max || 0 ].sum
+  end
+
+  def sinclair_total
+    sinclair_coefficient * olypmic_numeric_total
+  end
+
+  def sinclair
+    "%0.3f" % sinclair_total
+  end
+
+  def olympic_total
+    olypmic_numeric_total.to_s + " kg"
   end
 
   def mass
@@ -80,10 +117,6 @@ class User < ActiveRecord::Base
     else
       'Not given'
     end
-  end
-
-  def wilks
-    "%0.3f" % wilks_total
   end
 
   def name
@@ -106,7 +139,7 @@ class User < ActiveRecord::Base
     gender == 'M' ? 'Male' : 'Female'
   end
 
-  [:squat_max, :bench_max, :deadlift_max].each do |lift|
+  [:squat_max, :bench_max, :deadlift_max, :snatch_max, :clean_and_jerk_max].each do |lift|
     name = lift.to_s.sub(/_max$/, '').intern
     define_method(name) { self.send(lift).to_s + " kg" }
   end

@@ -21,7 +21,7 @@
   = f.date_select :birthdate, start_year: current_year - 50, end_year: current_year - 14
   .row
     %h3 Lifting Info
-    .span5
+    .span3
       = f.label :gender, 'Sex'
       = f.select :gender, ['M', 'F']
       = f.label :bodyweight, 'Bodyweight (in kilograms)'
@@ -35,13 +35,18 @@
         -# Female weight classes
         - weight_classes = ['43 kg', '47 kg', '52 kg', '57 kg', '63 kg', '72 kg', '84 kg', '84+ kg']
       = f.select :weight_class, weight_classes
-    .span5
+    .span4
       = f.label :squat_max, 'Back squat max (in kilograms)'
       = f.number_field :squat_max
       = f.label :bench_max, 'Bench press max (in kilograms)'
       = f.number_field :bench_max
       = f.label :deadlift_max, 'Deadlift max (in kilograms)'
       = f.number_field :deadlift_max
+    .span3
+      = f.label :snatch_max, 'Snatch max (in kilograms)'
+      = f.number_field :snatch_max
+      = f.label :clean_and_jerk_max, 'Clean & jerk max (in kilograms)'
+      = f.number_field :clean_and_jerk_max
   %hr/
   %div
     = f.label :email
