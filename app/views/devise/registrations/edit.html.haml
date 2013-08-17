@@ -26,7 +26,7 @@
       = f.select :gender, ['M', 'F']
       = f.label :bodyweight, 'Bodyweight (in kilograms)'
       = f.number_field :bodyweight
-      = f.label :weight_class
+      = f.label :weight_class, 'Powerlifting Weightclass'
       - weight_classes = []
       - if resource.gender.match /\Am/i
         -# Male weight classes
@@ -35,6 +35,15 @@
         -# Female weight classes
         - weight_classes = ['43 kg', '47 kg', '52 kg', '57 kg', '63 kg', '72 kg', '84 kg', '84+ kg']
       = f.select :weight_class, weight_classes
+      = f.label :oly_weight_class, 'Weightlifting weightclass'
+      - oly_weight_classes = []
+      - if resource.gender.match /\Am/i
+        -# Male weight classes
+        - oly_weight_classes = ['56 kg', '62 kg', '69 kg', '77 kg', '85 kg', '94 kg', '105 kg', '105+ kg' ]
+      - else
+        -# Female weight classes
+        - oly_weight_classes = ['48 kg', '53 kg', '58 kg', '63 kg', '69 kg', '75 kg', '75+ kg']
+      = f.select :oly_weight_class, oly_weight_classes
     .span4
       = f.label :squat_max, 'Back squat max (in kilograms)'
       = f.number_field :squat_max

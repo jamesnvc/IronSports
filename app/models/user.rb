@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me,
     :first_name, :last_name, :birthdate, :studying, :graduating, :bodyweight,
     :gender, :weight_class, :squat_max, :bench_max, :deadlift_max,
-    :snatch_max, :clean_and_jerk_max, :registration_number
+    :oly_weight_class, :snatch_max, :clean_and_jerk_max, :registration_number
   attr_protected :is_admin
 
   validates_format_of :gender, with: /\A(M|F)\z/, message: "M or F for gender"
