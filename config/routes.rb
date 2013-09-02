@@ -9,7 +9,7 @@ UofTIronSports::Application.routes.draw do
 
   root to: redirect("/posts")
 
-  for page in %w(leaderboard oly_leaderboard contact calendar media about results joinus supportus) do
+  for page in %w(leaderboard oly_leaderboard contact calendar media about results joinus supportus team club events) do
     match page => 'pages#show', name: page, as: page
   end
 
