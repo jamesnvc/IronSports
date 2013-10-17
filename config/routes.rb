@@ -15,6 +15,7 @@ UofTIronSports::Application.routes.draw do
 
   match 'resources' => redirect('http://uoftironsports.wordpress.com/resources')
   match 'members' => redirect('http://uoftironsports.wordpress.com/members')
+  match 'trainingday' => redirect('https://docs.google.com/forms/d/1a272m0nj7vFEJtUW8Txrj_FqsmG-V5wXeO_T4ewcyFA/viewform')
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
