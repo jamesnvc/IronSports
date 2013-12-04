@@ -11,6 +11,9 @@ en:
     logout: "Logout"
     search_field: "Search"
     download: "Download"
+    edit: "Edit"
+    delete: "Delete"
+    view: "View"
     edit_model: "Edit"
     delete_model: "Delete"
     batch_actions:
