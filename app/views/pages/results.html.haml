@@ -35,18 +35,23 @@
         %td= result.lifter
         %td= result.weight
         %td= result.gender
-        %td{:class => result.squat1_success ? 'success' : 'fail'}= result.squat1
-        %td{:class => result.squat2_success ? 'success' : 'fail'}= result.squat2
-        %td{:class => result.squat3_success ? 'success' : 'fail'}= result.squat3
-        %td= result.best_squat.zero? ? 'N/A' : result.best_squat
-        %td{:class => result.bench1_success ? 'success' : 'fail'}= result.bench1
-        %td{:class => result.bench2_success ? 'success' : 'fail'}= result.bench2
-        %td{:class => result.bench3_success ? 'success' : 'fail'}= result.bench3
-        %td= result.best_bench.zero? ? 'N/A' : result.best_bench
-        %td{:class => result.deadlift1_success ? 'success' : 'fail'}= result.deadlift1
-        %td{:class => result.deadlift2_success ? 'success' : 'fail'}= result.deadlift2
-        %td{:class => result.deadlift3_success ? 'success' : 'fail'}= result.deadlift3
-        %td= result.best_deadlift.zero? ? 'N/A' : result.best_deadlift
-        %td{:class => result.failed? ? 'fail' : ''}= result.total
+        %td{:class => result.squat1_success ? 'success' : 'fail'}= result_number result.squat1
+        %td{:class => result.squat2_success ? 'success' : 'fail'}= result_number result.squat2
+        %td{:class => result.squat3_success ? 'success' : 'fail'}= result_number result.squat3
+        %td= result_number result.best_squat
+        %td{:class => result.bench1_success ? 'success' : 'fail'}= result_number result.bench1
+        %td{:class => result.bench2_success ? 'success' : 'fail'}= result_number result.bench2
+        %td{:class => result.bench3_success ? 'success' : 'fail'}= result_number result.bench3
+        %td= result_number result.best_bench
+        %td{:class => result.deadlift1_success ? 'success' : 'fail'}= result_number result.deadlift1
+        %td{:class => result.deadlift2_success ? 'success' : 'fail'}= result_number result.deadlift2
+        %td{:class => result.deadlift3_success ? 'success' : 'fail'}= result_number result.deadlift3
+        %td= result_number result.best_deadlift
+        %td{:class => result.failed? ? 'fail' : ''}= result_number result.total
         %td{:class => result.failed? ? 'fail' : ''}= number_with_precision result.wilks_total, precision: 2
         %td= i+1
+
+-#
+
+  .text
+    %h3 October 28th 2012 Classic 3-Lift Competition
