@@ -18,3 +18,6 @@ en:
     delete_model: "Delete"
     batch_actions:
       button_label: "Bulk Actions"
+    blank_slate:
+      content: "No items"
+      link: "Create a new item"

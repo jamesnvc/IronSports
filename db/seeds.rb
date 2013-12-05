@@ -12,7 +12,8 @@
 #admin.is_admin = true
 #admin.save!
 
-meet1 = Meet.create(title: 'Octobr 5th 2013 Classic 3-Lift Competition')
+meet1 = Meet.create(title: 'Octobr 5th 2013 Classic 3-Lift Competition',
+                   occured: DateTime.new(2013, 10, 5))
 meet1.meet_results = [
   MeetResult.create(
     lifter:             'Walter Cariazo',
@@ -293,7 +294,8 @@ meet1.meet_results = [
 ]
 meet1.save!
 
-meet2 = Meet.create(title: 'April 7th 2013 Classic 3-Lift Competition')
+meet2 = Meet.create(title: 'April 7th 2013 Classic 3-Lift Competition',
+                    occured: DateTime.new(2013, 4, 7))
 meet2.meet_results = [
   MeetResult.create(
     lifter: 'Isaac Baik',
@@ -550,7 +552,8 @@ meet2.meet_results = [
 ]
 meet2.save!
 
-meet3 = Meet.create(title: 'October 28th 2012 Classic 3-Lift Competition')
+meet3 = Meet.create(title: 'October 28th 2012 Classic 3-Lift Competition',
+                   occured: DateTime.new(2012, 10, 28))
 meet3.meet_results = [
   MeetResult.create(
     lifter: 'John Tan',

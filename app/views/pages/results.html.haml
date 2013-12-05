@@ -2,7 +2,7 @@
 
 %p All weights in kilograms; red indicates a failed attempt, green indicates success
 
-- Meet.all.each do |meet|
+- Meet.order('occured DESC').each do |meet|
   .text
     %h3= meet.title
   %table.results
