@@ -54,6 +54,7 @@
                   %li= link_to 'The Club', '/club'
                   %li= link_to 'Our Events', '/events'
               - Page.nav_items.each do |pg|
+                - next if pg.private and !user_signed_in?
                 %li{class: request.path == "/#{pg.title}" ? 'active' : ''}= link_to pg.display_title, "/#{pg.title}"
               %li{class: request.path == results_path ? 'active' : ''}= link_to 'Results', results_path
               %li{class: (request.path == leaderboard_path || request.path == oly_leaderboard_path) ?  'active dropdown' : 'dropdown'}
