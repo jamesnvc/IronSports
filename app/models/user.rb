@@ -31,6 +31,10 @@ class User < ActiveRecord::Base
     self.is_admin
   end
 
+  def registered?
+    !self.registration_number.nil?
+  end
+
   def wilks_coeff
     return 0 if not self.bodyweight
     coeffs = {

@@ -9,8 +9,8 @@ UofTIronSports::Application.routes.draw do
 
   root to: redirect("/posts")
 
-  for page in %w(leaderboard oly_leaderboard contact calendar media about results joinus supportus team club events) do
-    match page => 'pages#show', name: page, as: page
+  for page in %w(leaderboard oly_leaderboard results) do
+    match page => 'pages#show_special', name: page, as: page
   end
 
   match 'resources' => redirect('http://uoftironsports.wordpress.com/resources')
@@ -69,6 +69,8 @@ UofTIronSports::Application.routes.draw do
   # root :to => 'welcome#index'
 
   # See how all your routes lay out with "rake routes"
+
+  get '/:name', to: 'pages#show'
 
   # This is a legacy wild controller route that's not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.
