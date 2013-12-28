@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  lifter: MyString
+  weight: 9.99
+  gender: MyString
+  squat1: 
+  squat2: 
+  squat3: 
+  bench1: 
+  bench2: 
+  bench3: 
+  deadlift1: 
+  deadlift2: 
+  deadlift3: 
+
+two:
+  lifter: MyString
+  weight: 9.99
+  gender: MyString
+  squat1: 
+  squat2: 
+  squat3: 
+  bench1: 
+  bench2: 
+  bench3: 
+  deadlift1: 
+  deadlift2: 
+  deadlift3: 
