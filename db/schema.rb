@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131228221238) do
+ActiveRecord::Schema.define(:version => 20140126002504) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -60,6 +60,34 @@ ActiveRecord::Schema.define(:version => 20131228221238) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.datetime "occured"
+  end
+
+  create_table "oly_meet_results", :force => true do |t|
+    t.string   "lifter"
+    t.decimal  "weight"
+    t.string   "gender"
+    t.decimal  "snatch1",               :precision => 6, :scale => 3
+    t.decimal  "snatch2",               :precision => 6, :scale => 3
+    t.decimal  "snatch3",               :precision => 6, :scale => 3
+    t.boolean  "snatch1_success"
+    t.boolean  "snatch2_success"
+    t.boolean  "snatch3_success"
+    t.decimal  "cleanandjerk1",         :precision => 6, :scale => 3
+    t.decimal  "cleanandjerk2",         :precision => 6, :scale => 3
+    t.decimal  "cleanandjerk3",         :precision => 6, :scale => 3
+    t.boolean  "cleanandjerk1_success"
+    t.boolean  "cleanandjerk2_success"
+    t.boolean  "cleanandjerk3_success"
+    t.integer  "oly_meet_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "oly_meets", :force => true do |t|
+    t.string   "title"
+    t.datetime "occured"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "pages", :force => true do |t|

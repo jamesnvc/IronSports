@@ -4,6 +4,7 @@
 en:
   hello: "Hello world"
   active_admin:
+    cancel: "Cancel"
     new_model: "Create"
     details: "Details"
     dashboard: "Dashboard"
