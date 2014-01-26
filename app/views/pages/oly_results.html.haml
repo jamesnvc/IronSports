@@ -1,0 +1,44 @@
+%h2 Weightlifting Results
+
+%p All weights in kilograms; red indicates a failed attempt, green indicates success
+
+- OlyMeet.order('occured DESC').each do |meet|
+  .text
+    %h3= meet.title
+  %table.results
+    %tr
+      %th(colspan="3") Lifters
+      %th(colspan="4") Snatch Attempts
+      %th(colspan="4") Clean &amp; Jerk Attempts
+    %tr
+      %th Name
+      %th Weight
+      %th Sex
+      %th  1
+      %th  2
+      %th  3
+      %th Best
+      %th  1
+      %th  2
+      %th  3
+      %th Best
+      %th Total
+      %th Sinclair
+      %th Place
+    - meet.oly_meet_results.sort_by(&:sinclair_total).reverse.each_with_index do |result, i|
+      %tr
+        %td= result.lifter
+        %td= result.weight
+        %td= result.gender
+        %td{:class => result.snatch1_success ? 'success' : 'fail'}= result_number result.snatch1
+        %td{:class => result.snatch2_success ? 'success' : 'fail'}= result_number result.snatch2
+        %td{:class => result.snatch3_success ? 'success' : 'fail'}= result_number result.snatch3
+        %td= result_number result.best_snatch
+        %td{:class => result.cleanandjerk1_success ? 'success' : 'fail'}= result_number result.cleanandjerk1
+        %td{:class => result.cleanandjerk2_success ? 'success' : 'fail'}= result_number result.cleanandjerk2
+        %td{:class => result.cleanandjerk3_success ? 'success' : 'fail'}= result_number result.cleanandjerk3
+        %td= result_number result.best_cleanandjerk
+        %td{:class => result.failed? ? 'fail' : ''}= result_number result.total
+        %td{:class => result.failed? ? 'fail' : ''}= number_with_precision result.sinclair_total, precision: 2
+        %td= i+1
+
